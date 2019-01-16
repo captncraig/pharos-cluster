@@ -77,6 +77,7 @@ module Pharos
 
         response = @client.session.open_channel do |channel|
           channel.env('LC_ALL', 'C.UTF-8')
+          channel.env('PATH', '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin')
           channel.exec @cmd do |_, success|
             raise Error, "Failed to exec #{cmd}" unless success
 
